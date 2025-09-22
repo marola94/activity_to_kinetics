@@ -1,8 +1,8 @@
 # activity_to_kinetics
-Python script for calculating reaction rates from activity experiments and analyzing enzyme kinetics. Developed as part of the study "Characterizing family 1 glycosyltransferases (GT1, UGT) by reverse glycosylation: fast determination of acceptor specificity, donor specificity, hydrolysis, and enzyme stability." 
+Python script for calculating reaction rates from activity experiments and analyzing enzyme kinetics. Developed as part of the study "Characterizing family 1 glycosyltransferases (GT1, UGT) by reverse glycosylation: fast determination of acceptor specificity, donor specificity, hydrolysis, and enzyme stability".   
 
 #### Disclaimer
-- Used for CNP-\beta-glycoside reaction with GT1 enzymes
+While this code has been developed (and only used) to determine rates and kintics from UV-vis experiments with Glycosyltransferase family 1 enzymens (GT1) in combination with CNP-\beta-glycosides, this program can in principle be used in other relations. In addition, the software has primarily been tested by the developer. Feedback, bug reports, and contributions are very welcome.
 
 ## Installation
 
@@ -57,7 +57,7 @@ python -m pip install --upgrade pip
 python -m pip install .
 ```
 
-Now you are goo
+Now you are good to go!
 ## User instructions
 
 
