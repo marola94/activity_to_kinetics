@@ -61,18 +61,17 @@ python -m pip install .
 ```
 
 Now you are good to go!
-## User instructions
 
-### Setting the prerequisites up
+## Input File & Settings
 
 The program expects a single Excel workbook with **three sheets**:
 
-- **Measurements** – raw activity data per 96-well plate position (A1–H12) + optional unit conversion setup and optional plot titles.
-- **Rate settings** – optional manual data point ranges for initial-rate fitting (per well).
-- **Kinetics settings** – model definition (Michaelis–Menten or substrate-inhibition), enzyme concentration, and which wells/initial rates to use with their substrate concentrations. Only required for estimating kinetics.
+- **Measurements** – raw activity data per 96-well plate position (A1–H12), plus optional unit-conversion setup and optional plot titles.
+- **Rate settings** – optional manual data-point ranges for initial-rate fitting (per well).
+- **Kinetics settings** – model definition (Michaelis–Menten or substrate-inhibition), enzyme concentration, and which wells/initial rates to use with their substrate concentrations. *(Only required if you plan to estimate kinetics.)*
 
-Go to data -> raw and open 'Template_data_file.xlsx' to see the expected layout.
-It is recommended (expected) that you copy-paste the 'Template_data_file.xlsx' rename it and insert your own activity data and setting parameters for your own runs.  
+Open `data/raw/Template_data_file.xlsx` to see the expected layout.  
+Recommended workflow: **copy** `Template_data_file.xlsx`, **rename** it, and **fill in** your own activity data and settings for your run(s).
 
 ---
 
@@ -129,7 +128,7 @@ Define how kinetics should be computed from initial rates.
 - [ ] Time in Excel format **or** numeric with **Time unit** set.  
 - [ ] **Measurement unit** provided; if converting absorbance → concentration, **only one** method filled and **Desired unit** chosen.  
 - [ ] (Optional) Manual ranges in `Rate settings` for wells that need it.  
-- [ ] `Kinetics settings` has enzyme concentration (+ unit), model choice, wells + matching substrate concentrations (≥ 4 pairs).
+- [ ] To estimate kinetics, provide the enzyme concentration (+ unit), model choice, wells + corresponding substrate concentrations (≥ 4 pairs) in to the `Kinetics settings` sheet.
 
-
+## 
 
