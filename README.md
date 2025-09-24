@@ -36,11 +36,11 @@ Open a terminal and move to the downloaded folder
 - macOS/Linux: right-click the folder → “Open in Terminal”.
 
 #### 3) Create a virtual environment (Optional)  
-# Windows (PowerShell)
+##### Windows (PowerShell)
 python -m venv .venv
 . .\.venv\Scripts\Activate.ps1
 
-# macOS/Linux
+##### macOS/Linux
 python3 -m venv .venv
 source .venv/bin/activate
 
