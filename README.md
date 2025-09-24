@@ -37,13 +37,16 @@ Open a terminal and move to the downloaded folder
 
 #### 3) Create a virtual environment (Optional)  
 ##### Windows (PowerShell)
+```bash
 python -m venv .venv
 . .\.venv\Scripts\Activate.ps1
+```
 
 ##### macOS/Linux
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
-
+```
 or with conda:
 ```bash
 conda create -n activity_to_kinetics python=3.11 -y
