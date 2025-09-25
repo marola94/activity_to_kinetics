@@ -2,7 +2,7 @@ import pandas as pd
 import sys
 import sys
 import datetime
-from units import ureg, map_concentration_unit
+from .units import ureg, map_concentration_unit
 
 def validate_parameters(all_params):
     

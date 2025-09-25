@@ -142,56 +142,64 @@ You will run the tool from a **terminal** inside the project folder.
 ### 2) Quick check
 Show the built-in help with the commands that can be run:
 ```bash
-python -m activity_to_kinetics --help
+atk --help
 ```
 
-### Command reference (CLI options)
+### Commands reference
 
 `-m, --measurements_file <path>`
-Path to the input Excel with the three sheets (Measurements, Rate settings, Kinetics settings). Usually required.
+  Path to the input Excel with the three sheets (`Measurements`, `Rate settings`, `Kinetics settings`). Always required.
 
--w, --wells <spec>
-Which wells to process: single wells (A1), rows/columns (B,4), or a mix (C,2,B7).
-If omitted, all available wells are processed.
+`-w, --wells <spec>`
+  Which wells to process: single wells (e.g. `-w A1`), rows/columns (`-w B` or `-w 4`), or a mix (`-w C,2,B7`).
+  If omitted, all available wells with data in the `Measurements` file will be processed.
 
--r, --estimate_rates
-Estimate initial rates automatically.
+`-r, --estimate_rates`
+  Estimate initial rates automatically.
 
--f, --fitting
-Use manual start/end datapoints from Rate settings (must be combined with -r).
+`-f, --fitting`
+  Use manual start/end datapoints specified in the `Rate settings` sheet (must be combined with `-r`).
 
--k, --estimate_kinetics
-Compute kinetic parameters using models in Kinetics settings.
-Needs initial rates (from -s or computed with -r in the same run).
+`-k, --estimate_kinetics`
+  Compute kinetic parameters using models definitions created in the `Kinetics settings` sheet.
+  Needs initial rates (from `-s` or computed with `-r` in the same run).
 
--s, --rates_input_file <path>
-Excel with precomputed initial rates (if you don’t use -r).
+`-s, --rates_input_file <path>`
+  Excel with precomputed initial rates (if you don’t use `-r`).
 
--q, --rates_output_file <name>
-Output Excel filename for initial rates (saved under -d).
+`-q, --rates_output_file <name>`
+  Output Excel filename for initial rates (saved under `-d`).
 
--o, --kinetics_output_file <name>
-Output Excel filename for kinetics results.
+`-o, --kinetics_output_file <name>`
+  Output Excel filename for kinetics results.
 
--d, --output_directory <path>
-Directory where outputs (plots and Excel files) are written. Defaults to the working directory (subfolders are created as needed).
+`-d, --output_directory <path>`  
+  Where outputs (plots and Excel files) are written.  
+  If omitted, the tool defaults to `<CWD>/data/processed/` and creates it automatically.  
+  *(CWD = your current working directory when you run `atk`.)*
 
--n, --create_output
-Create default output files/folders even if explicit names are not provided.
+`-n, --create_output`
+  Create default output files/folders even if explicit names are not provided.
 
--p, --plot_activity
-Generate and save activity plots per well.
+`-p, --plot_activity`
+  Generate and save activity plots per well.
 
--c, --convert_absorbances {Standard,extinction,none}
-Conversion from absorbance to concentration.
-Note: Prefer defining conversion inside the Excel template (Measurements sheet).
+### Usefuls commands
 
--u, --conversion_unit {mol/L,mmol/L,umol/L,nmol/L}
-Target concentration unit after conversion.
+Plot activity of all wells in the `Measurements` sheet
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -p
+```
+> **Note:** plots are saved in `/data/processed/activity_plots`
 
--a, --slope <float> / -b, --intercept <float>
-Calibration-curve parameters (used with -c Standard).
+Plot activity for row B and column 4 of the 96 well micro titer plate and save the plots in a folder called `special_enzyme` in the `data/processed` directory 
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -w "B,4" -p "data/processed/special_enzyme"
+```
 
--e, --extinction_coefficient <float>
-Extinction coefficient (M^-1 cm^-1) (used with -c extinction; path length is defined in the template).
+Plot activity and estimate rates of all wells in the `Measurements` sheet of the uploaded file and save the rate results 
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -p -r -n
+```
+> **Note:** the default directory for rate results is `/data/processed` with the default file name `rate_results.xlsx`
 

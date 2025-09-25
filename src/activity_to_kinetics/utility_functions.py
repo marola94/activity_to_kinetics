@@ -2,17 +2,13 @@ import numpy as np
 import pandas as pd
 import argparse
 import re
-#import pint
 import sys
 import datetime
 from pathlib import Path
 import os
 from collections import Counter
-from units import ureg, map_concentration_unit
+from .units import ureg, map_concentration_unit
 
-#ureg = pint.UnitRegistry()
-#ureg.default_format = "~P"
-#ureg.define("absorbance_unit = [] = AU ")
 
 def filter_columns_by_well_list(df, well_list):
     """
@@ -230,7 +226,7 @@ def create_path(path: str | None = None) -> Path:
 
     if path is None or str(path).strip() == "":
         # No user input: default to the current working directory
-        p = Path.cwd()
+        p = Path.cwd() / "data" / "processed"
     else:
         # Expand environment variables and the user's home (~)
         s = os.path.expandvars(str(path).strip())

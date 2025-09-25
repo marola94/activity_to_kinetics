@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
-import validation
+from . import validation
 
 
 def load_measurements_file(file_path):
@@ -33,7 +33,7 @@ def load_measurements_file(file_path):
 
             elif cell.value == 'Time unit:':
                 unit_cell = sheet.cell(row=cell.row, column=cell.column + 1).value
-                all_params['Time unit'] = np.nan if unit_cell is None or str(unit_cell).strip().lower() == 'none' else str(unit_cell).strip()
+                all_params['Time unit'] = np.nan if unit_cell is None or str(unit_cell).strip().lower() == 'Time format' else str(unit_cell).strip()
 
             elif cell.value == 'Desired unit:':
                 unit_cell = sheet.cell(row=cell.row, column=cell.column + 1).value

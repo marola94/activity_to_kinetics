@@ -1,6 +1,6 @@
 # src/activity_to_kinetics/cli.py
 import argparse
-from . import utility_functions as uf  # well_arg bor her hos dig
+from . import utility_functions as uf 
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(
@@ -14,7 +14,7 @@ def parse_args(argv=None):
                         help=("Specify which wells to analyze. You can specifiy specific wells (e.g. A1; -w A1) "
                               "or whole rows and columns of the 96MTP (e.g. row B and/or line 4; -w B, 4). "
                               "It is also possible to specify wells along with columns or rows "
-                              "(e.g. row C, 2 and well B7; -w C, 2, B7 ). "))
+                              "(e.g. row C, column 2 and well B7; -w C, 2, B7 ). "))
 
     parser.add_argument("-f", "--fitting", action='store_true',
                         help="Activates manual rate fitting if called together with the -r flag.")
@@ -38,7 +38,7 @@ def parse_args(argv=None):
                         help="The directory to store the output files. Default is in working directory.")
 
     parser.add_argument("-n", "--create_output", action='store_true',
-                        help="Saves the results as defualt Excel file.")
+                        help="Saves the results as an Excel file with default name.")
 
     parser.add_argument("-p", "--plot_activity", action='store_true',
                         help="Plotting the activity measurements.")

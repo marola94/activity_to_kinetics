@@ -3,7 +3,7 @@ from scipy.optimize import curve_fit, OptimizeWarning
 from itertools import combinations
 import matplotlib.pyplot as plt
 from scipy.stats import zscore
-from units import ureg
+from .units import ureg
 import warnings
 
 

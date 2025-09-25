@@ -17,18 +17,6 @@ from .units import ureg, map_concentration_unit
 
 def main(args):
 
-    #make it a possibility to skip the interface if specific flags are called
-
-    abs_conversion_dict = {
-        "convert_absorbances": args.convert_absorbances,
-        "conversion_unit": args.conversion_unit,
-        "slope": args.slope,
-        "intercept": args.intercept,
-        "extinction_coefficient": args.extinction_coefficient 
-    }
-    
-
-
     # Path to store output files and figures
     storing_path = uf.create_path(args.output_directory)
 
@@ -328,48 +316,5 @@ def main(args):
             #   Update rate calculation code -> faster and better
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Proccess activity data and plot, determine rate or kinetics.')
 
-    parser.add_argument("-m", "--measurements_file", type=str, 
-                        help="Path to the input Excel file with activity measurements.")
-    parser.add_argument("-w", "--wells", type=uf.well_arg, help="Specify which wells to analyze. You can specifiy specific wells (e.g. A1; -w A1) " \
-                        "or whole rows and columns of the 96MTP (e.g. row B and/or line 4; -w B, 4). It is also possible to specify wells along with columns" \
-                        "or rows (e.g. row C, 2 and well B7; -w C, 2, B7 ). ")
-
-    parser.add_argument("-c", "--convert_absorbances", type=str, choices=['Standard','extinction','none'],
-                        help="Convert absorbances to concentrations and type either 'Standard' or 'Extinction' to specify the conversion method. Or type 'None' to continue without conversion.")
-    parser.add_argument("-u", "--conversion_unit", type=str, choices=["mol/L", "mmol/L", "umol/L", "nmol/L"], 
-                        help="The desired unit to convert absorbances to.")
-    parser.add_argument("-a", "--slope", type= float,
-                        help="The slope of the standard curve given in the same unit as the specified unit with the '-u' flag.")
-    parser.add_argument("-b", "--intercept", type= float, 
-                        help="The intercept of the standard curve given in the same unit as the specified unit with the '-u' flag.")
-    parser.add_argument("-e", "--extinction_coefficient", type=float, 
-                        help=r"The extinction coefficient, given in M$^{-1}$cm${-1}$.")
-    
-    parser.add_argument("-f", "--fitting", action='store_true', 
-                        help="Activates manual rate fitting if called together with the -r flag.") 
-    parser.add_argument("-k", "--estimate_kinetics", action='store_true', 
-                        help="Activates estimation of kinetic parameters.") 
-    parser.add_argument("-r", "--estimate_rates", action='store_true', 
-                        help="Activates automatic rate estimation.")
-    
-    parser.add_argument("-s", "--rates_input_file", type=str,
-                        help="Path to the input Excel file with rates from activity experiments.")
-    
-    parser.add_argument("-q", "--rates_output_file", type=str,
-                        help="Name of output excel file for intial rates.")    
-    parser.add_argument("-o", "--kinetics_output_file", type=str,
-                        help="Name of output excel file for kinetics.")
-    parser.add_argument("-d", "--output_directory", type = str,
-                        help = "The directory to store the output files. Default is in working directory.")
-    parser.add_argument("-n", "--create_output", action='store_true',
-                        help = "Saves the results as defualt Excel file.")
-
-    parser.add_argument("-p", "--plot_activity", action='store_true',
-                        help="Plotting the activity measurements.")
-    
-    args = parser.parse_args()
-    main(args)
     

@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import math
-from units import ureg
-import activity_to_kinetics.src.activity_to_kinetics.kinetic_model_fitting as kmf
+from .units import ureg
+from . import kinetic_model_fitting as kmf
 from matplotlib.lines import Line2D
 
 class ScalarFormatterClass(mticker.ScalarFormatter):
