@@ -106,7 +106,7 @@ Use this if the automatic initial-rate finder isn’t satisfactory for specific 
 
 ### 3) `Kinetics settings` sheet
 
-Define how kinetics should be computed from initial rates.
+To calculate kinetics, define how kinetics should be computed from initial rates.
 
 - **Enzyme concentration:** Provide the value **and** the unit (e.g., `nM`, `μM`, `mM`, `M`).
 - **Model:** Choose one of:
@@ -130,5 +130,68 @@ Define how kinetics should be computed from initial rates.
 - [ ] (Optional) Manual ranges in `Rate settings` for wells that need it.  
 - [ ] To estimate kinetics, provide the enzyme concentration (+ unit), model choice, wells + corresponding substrate concentrations (≥ 4 pairs) in to the `Kinetics settings` sheet.
 
-## 
+## Usage
+
+You will run the tool from a **terminal** inside the project folder.  
+> **Windows Note**: if `python` doesn’t work, try `py` instead.
+
+### 1) Open a terminal in the project folder
+- Windows: open the folder in File Explorer → click the address bar → type `powershell` → Enter.
+- macOS/Linux: right-click the folder → “Open in Terminal”.
+
+### 2) Quick check
+Show the built-in help with the commands that can be run:
+```bash
+python -m activity_to_kinetics --help
+```
+
+### Command reference (CLI options)
+
+`-m, --measurements_file <path>`
+Path to the input Excel with the three sheets (Measurements, Rate settings, Kinetics settings). Usually required.
+
+-w, --wells <spec>
+Which wells to process: single wells (A1), rows/columns (B,4), or a mix (C,2,B7).
+If omitted, all available wells are processed.
+
+-r, --estimate_rates
+Estimate initial rates automatically.
+
+-f, --fitting
+Use manual start/end datapoints from Rate settings (must be combined with -r).
+
+-k, --estimate_kinetics
+Compute kinetic parameters using models in Kinetics settings.
+Needs initial rates (from -s or computed with -r in the same run).
+
+-s, --rates_input_file <path>
+Excel with precomputed initial rates (if you don’t use -r).
+
+-q, --rates_output_file <name>
+Output Excel filename for initial rates (saved under -d).
+
+-o, --kinetics_output_file <name>
+Output Excel filename for kinetics results.
+
+-d, --output_directory <path>
+Directory where outputs (plots and Excel files) are written. Defaults to the working directory (subfolders are created as needed).
+
+-n, --create_output
+Create default output files/folders even if explicit names are not provided.
+
+-p, --plot_activity
+Generate and save activity plots per well.
+
+-c, --convert_absorbances {Standard,extinction,none}
+Conversion from absorbance to concentration.
+Note: Prefer defining conversion inside the Excel template (Measurements sheet).
+
+-u, --conversion_unit {mol/L,mmol/L,umol/L,nmol/L}
+Target concentration unit after conversion.
+
+-a, --slope <float> / -b, --intercept <float>
+Calibration-curve parameters (used with -c Standard).
+
+-e, --extinction_coefficient <float>
+Extinction coefficient (M^-1 cm^-1) (used with -c extinction; path length is defined in the template).
 
