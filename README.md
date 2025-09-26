@@ -186,20 +186,45 @@ atk --help
 
 ### Usefuls commands
 
-Plot activity of all wells in the `Measurements` sheet
+##### Plot activity of all wells in the `Measurements` sheet
 ```bash
 atk -m "data/raw/<measurements_filename.xlsx>" -p
 ```
 > **Note:** plots are saved in `/data/processed/activity_plots`
 
-Plot activity for row B and column 4 of the 96 well micro titer plate and save the plots in a folder called `special_enzyme` in the `data/processed` directory 
+##### Plot activity for row B, column 4 and well F9 of the 96 well micro titer plate
 ```bash
-atk -m "data/raw/<measurements_filename.xlsx>" -w "B,4" -p "data/processed/special_enzyme"
-```
+atk -m "data/raw/<measurements_filename.xlsx>" -w "B,4,F9" -p 
+```  
 
-##### Plot activity and estimate rates of all wells in the `Measurements` sheet of the uploaded file and save the rate results 
+#### Estimating rates
+##### Plot activity and estimate rates of all wells in the `Measurements` sheet of the uploaded file and save the rate results.
 ```bash
 atk -m "data/raw/<measurements_filename.xlsx>" -p -r -n
 ```
-> **Note:** the default directory for rate results is `/data/processed` with the default file name `rate_results.xlsx`
+> **Note:** the default directory for rate results is `/data/processed` with the default file name `rate_results.xlsx`.
 
+##### In case you want to save results in a specific folder.
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -p -r -d "<folder_name>"
+```
+> **Note:** the results will be saved in the `activity_to_kinetics` folder within the given folder name. To place the results in `/data/processed` repository write: `/data/processed/<folder_name>`.
+
+The default name of results Excel files computed for rate and kinetics are `rate_results` and `kinetic_results`
+##### To determine the name of the Excel file with rate results
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -p -r -q "<results_file>"
+```
+
+##### To re-calculate a specific well and update the results file
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -p -r -w "D12" -q "<path/to/results_file>"
+```
+or
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -p -r -w "D12" -n
+```
+if the file to overwrite is the default output file `/data/processed/rate_results.xlsx`
+
+#### Estimating kinetics
+##### 
