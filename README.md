@@ -216,7 +216,7 @@ The default name of results Excel files computed for rate and kinetics are `rate
 atk -m "data/raw/<measurements_filename.xlsx>" -p -r -q "<results_file>"
 ```
 
-##### To re-calculate a specific well and update the results file
+##### Refit one well with manual range (from Rate settings) and re-calculate a specific well and update the results file
 ```bash
 atk -m "data/raw/<measurements_filename.xlsx>" -p -r -w "D12" -q "<path/to/results_file>"
 ```
@@ -227,4 +227,19 @@ atk -m "data/raw/<measurements_filename.xlsx>" -p -r -w "D12" -n
 if the file to overwrite is the default output file `/data/processed/rate_results.xlsx`
 
 #### Estimating kinetics
-##### 
+##### Compute kinetics from an existing rates file (models set in Kinetics settings) and save in default folder
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -k -s "data/processed/rates_results.xlsx" -n
+```
+> **Note:** to save in a specfic folder use `-d <folder_name>`
+
+##### Estimate rates AND kinetics in one go, and save both rates and kinetic parameters to Excel
+```bash
+atk -m "data/raw/<measurements_filename.xlsx>" -r -k -q "<rates_file_name>" -o "<kinetics_file_name>" 
+```
+> **Note:** the `-q` flag specifies the rate file name and the `-o` is the kinetcs file name
+
+> **Note:** you can not estimate kinetics from both an existing Excel file with computed rates and directly from the measurements.
+
+
+
