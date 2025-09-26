@@ -184,7 +184,7 @@ atk --help
 `-p, --plot_activity`
   Generate and save activity plots per well.
 
-### Usefuls commands
+### Useful prompts
 
 ##### Plot activity of all wells in the `Measurements` sheet
 ```bash
