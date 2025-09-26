@@ -197,7 +197,7 @@ Plot activity for row B and column 4 of the 96 well micro titer plate and save t
 atk -m "data/raw/<measurements_filename.xlsx>" -w "B,4" -p "data/processed/special_enzyme"
 ```
 
-Plot activity and estimate rates of all wells in the `Measurements` sheet of the uploaded file and save the rate results 
+##### Plot activity and estimate rates of all wells in the `Measurements` sheet of the uploaded file and save the rate results 
 ```bash
 atk -m "data/raw/<measurements_filename.xlsx>" -p -r -n
 ```
